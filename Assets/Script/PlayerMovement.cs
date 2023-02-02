@@ -1,66 +1,70 @@
-
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed;
+    public Animator animator;
+    public LayerMask collisionLayers;
 
     public Transform groundCheck;
     public float groundCheckRadius;
-    public LayerMask collisionLayers;
-    public Rigidbody2D rb;
 
-    public Animator animator;
-
-    public SpriteRenderer spriteRenderer;
-    private Vector3 velocity = Vector3.zero;
+    private float horizontalMovement;
     private bool isGrounded;
     private bool isJumping;
 
     public float jumpForce;
+    public float moveSpeed;
+    public Rigidbody2D rb;
 
-    private float horizontalMovement;
+    public SpriteRenderer spriteRenderer;
+    private Vector3 velocity = Vector3.zero;
 
-
-    void Update() {
-        
-        if(Input.GetButtonDown("Jump") && isGrounded) {
+    private void Update()
+    {
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
             isJumping = true;
         }
 
-         horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed;
+        horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed;
 
-        float characterVelocity = Mathf.Abs(rb.velocity.x);
-         animator.SetFloat("Speed", characterVelocity);
+        var characterVelocity = Mathf.Abs(rb.velocity.x);
+        animator.SetFloat("Speed", characterVelocity);
     }
 
-    void FixedUpdate() {
+    private void FixedUpdate()
+    {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, collisionLayers);
         Flip(rb.velocity.x);
         MovePlayer(horizontalMovement);
     }
 
-    void MovePlayer(float _horizontalMovement) {
-
+    private void MovePlayer(float _horizontalMovement)
+    {
         rb.velocity = new Vector2(_horizontalMovement, rb.velocity.y);
 
-        if (isJumping == true) {
+        if (isJumping)
+        {
             rb.AddForce(new Vector2(0f, jumpForce));
             isJumping = false;
         }
     }
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos()
+    {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 
-    void Flip(float _velocity) {
-        if(_velocity > 0.1f) {
+    private void Flip(float _velocity)
+    {
+        if (_velocity > 0.1f)
+        {
             spriteRenderer.flipX = false;
-        } else if (_velocity < -0.1f) {
+        }
+        else if (_velocity < -0.1f)
+        {
             spriteRenderer.flipX = true;
         }
     }
 }
-

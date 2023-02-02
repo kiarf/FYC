@@ -4,15 +4,20 @@ namespace Assets.Script
 {
     public class PlayerHealth : MonoBehaviour
     {
-        public int CurrentHealth = 100;
-
-        public HealthBar HealthBar;
-        public int maxHealth = 100;
+        public int currentHealth;
+        public HealthBar healthBar;
+        public int maxHealth;
 
         private void Start()
         {
-            CurrentHealth = maxHealth;
-            HealthBar.SetMaxHealth(maxHealth);
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+        }
+
+        private void TakeDamage(int damage)
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
         }
 
         private void Update()
@@ -21,12 +26,6 @@ namespace Assets.Script
             {
                 TakeDamage(20);
             }
-        }
-
-        void TakeDamage(int damage)
-        {
-            CurrentHealth -= damage;
-            HealthBar.SetHealth(CurrentHealth);
         }
     }
 }
