@@ -81,6 +81,7 @@ namespace Assets.Script
             playerMovementInstance.animator.SetTrigger("Death");
             playerMovementInstance.rb.bodyType = RigidbodyType2D.Kinematic;
             playerMovementInstance.playerCollider.enabled = false;
+            GameOverManager.instance.OnPlayerDeath();
         }
     }
 }
