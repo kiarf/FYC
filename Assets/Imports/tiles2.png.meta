@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -6415,7 +6415,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tiles2_27: -54694452
+      tiles2_148: -1845024431
       tiles2_100: -189079419
       tiles2_119: -1417843222
       tiles2_97: -1707863886
@@ -6480,9 +6480,9 @@ TextureImporter:
       tiles2_128: -1521576086
       tiles2_230: -18217085
       tiles2_13: 257838762
+      tiles2_266: 718778548
       tiles2_291: 1377370896
       tiles2_72: 2011820813
-      tiles2_266: 718778548
       tiles2_258: -408330507
       tiles2_29: -91125156
       tiles2_62: 1877803428
@@ -6709,11 +6709,11 @@ TextureImporter:
       tiles2_215: -1700821145
       tiles2_251: 2028433784
       tiles2_79: 969815813
+      tiles2_283: -790327517
       tiles2_224: 1417223613
       tiles2_197: -247480272
       tiles2_160: -1252295668
-      tiles2_283: -790327517
-      tiles2_148: -1845024431
+      tiles2_27: -54694452
       tiles2_189: -207694605
   spritePackingTag: 
   pSDRemoveMatte: 0
