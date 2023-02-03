@@ -25,7 +25,7 @@ namespace Assets.Script
         {
             if (Input.GetKeyDown(KeyCode.H))
             {
-                TakeDamage(20);
+                TakeDamage(60);
             }
         }
 
@@ -35,6 +35,13 @@ namespace Assets.Script
             {
                 currentHealth -= damage;
                 healthBar.SetHealth(currentHealth);
+
+                if (currentHealth <= 0)
+                {
+                    HandleDeath();
+                    return;
+                }
+
                 HandleInvulnerabilityFrames();
             }
         }
@@ -65,6 +72,15 @@ namespace Assets.Script
         {
             spriteRenderer.color = visible ? new Color(1f, 1f, 1f, 0f) : new Color(1f, 1f, 1f, 1f);
             yield return new WaitForSeconds(InvicibilityFlashDelay);
+        }
+
+        public void HandleDeath()
+        {
+            var playerMovementInstance = PlayerMovement.instance;
+            playerMovementInstance.enabled = false;
+            playerMovementInstance.animator.SetTrigger("Death");
+            playerMovementInstance.rb.bodyType = RigidbodyType2D.Kinematic;
+            playerMovementInstance.playerCollider.enabled = false;
         }
     }
 }

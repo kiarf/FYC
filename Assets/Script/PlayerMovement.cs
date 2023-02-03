@@ -1,3 +1,4 @@
+using Assets.Script;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,9 +16,23 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float moveSpeed;
     public Rigidbody2D rb;
+    public CapsuleCollider2D playerCollider;
 
     public SpriteRenderer spriteRenderer;
     private Vector3 velocity = Vector3.zero;
+
+    public static PlayerMovement instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("Numerous PlayerMovement instances in the scene");
+            return;
+        }
+
+        instance = this;
+    }
 
     private void Update()
     {
