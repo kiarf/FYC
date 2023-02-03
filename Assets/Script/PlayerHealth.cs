@@ -15,6 +15,19 @@ namespace Assets.Script
 
         public SpriteRenderer spriteRenderer;
 
+        public static PlayerHealth instance;
+
+        private void Awake()
+        {
+            if (instance != null)
+            {
+                Debug.LogWarning("Numerous PlayerHealth instances in the scene");
+                return;
+            }
+
+            instance = this;
+        }
+
         private void Start()
         {
             currentHealth = maxHealth;
