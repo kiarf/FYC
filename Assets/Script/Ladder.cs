@@ -1,48 +1,50 @@
-using Assets.Script;
 using UnityEngine;
 
-public class Ladder : MonoBehaviour
+namespace Assets.Script
 {
-    private bool _playerCollides;
-
-    private PlayerMovement _playerMovement;
-
-    public BoxCollider2D topCollider;
-
-    private void Awake()
+    public class Ladder : MonoBehaviour
     {
-        _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-    }
+        private bool _playerCollides;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        private PlayerMovement _playerMovement;
+
+        public BoxCollider2D topCollider;
+
+        private void Awake()
         {
-            _playerCollides = true;
+            _playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         }
-    }
 
-    private void Update()
-    {
-        if (_playerMovement.isClimbing && Input.GetKeyDown(KeyCode.E))
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            _playerMovement.isClimbing = false;
-            topCollider.isTrigger = false;
+            if (collision.CompareTag("Player"))
+            {
+                _playerCollides = true;
+            }
         }
-        else if (_playerCollides && Input.GetKeyDown(KeyCode.E))
-        {
-            _playerMovement.isClimbing = true;
-            topCollider.isTrigger = true;
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        private void Update()
         {
-            _playerCollides = false;
-            topCollider.isTrigger = false;
-            _playerMovement.isClimbing = false;
+            if (_playerMovement.isClimbing && Input.GetKeyDown(KeyCode.E))
+            {
+                _playerMovement.isClimbing = false;
+                topCollider.isTrigger = false;
+            }
+            else if (_playerCollides && Input.GetKeyDown(KeyCode.E))
+            {
+                _playerMovement.isClimbing = true;
+                topCollider.isTrigger = true;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                _playerCollides = false;
+                topCollider.isTrigger = false;
+                _playerMovement.isClimbing = false;
+            }
         }
     }
 }

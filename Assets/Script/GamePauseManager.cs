@@ -6,7 +6,7 @@ namespace Assets.Script
     {
         public static bool isPaused;
 
-        public GameObject pauseMenu;
+        public GameObject gamePauseUi;
 
         private void Update()
         {
@@ -25,14 +25,14 @@ namespace Assets.Script
 
         public void Pause()
         {
-            pauseMenu.SetActive(true);
+            gamePauseUi.SetActive(true);
             Time.timeScale = 0f;
             isPaused = true;
         }
 
         public void Resume()
         {
-            pauseMenu.SetActive(false);
+            gamePauseUi.SetActive(false);
             Time.timeScale = 1f;
             isPaused = false;
         }

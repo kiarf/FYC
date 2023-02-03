@@ -1,14 +1,12 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Script
 {
     public class EnemyPatrol : MonoBehaviour
     {
+        public const int DamageOnCollision = 20;
         private int _currentTarget;
         private Transform _currentTargetPosition;
-
-        public const int DamageOnCollision = 20;
 
         public float speed;
         public SpriteRenderer spriteRenderer;

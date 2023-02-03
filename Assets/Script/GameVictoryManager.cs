@@ -3,31 +3,31 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Script
 {
-    public class GameOverManager : MonoBehaviour
+    public class GameVictoryManager : MonoBehaviour
     {
-        public static GameOverManager instance;
-        public GameObject gameOverUI;
+        public static GameVictoryManager instance;
+        public GameObject gameVictoryUi;
 
         public void Awake()
         {
             if (instance != null)
             {
-                Debug.Log("Numerous GameOverManager instances in the scene");
+                Debug.Log("Numerous GameVictoryManager instances in the scene");
                 return;
             }
 
             instance = this;
         }
 
-        public void OnPlayerDeath()
+        public void OnPlayerVictory()
         {
-            gameOverUI.SetActive(true);
+            gameVictoryUi.SetActive(true);
         }
 
         public void RetryButton()
         {
+            gameVictoryUi.SetActive(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            gameOverUI.SetActive(false);
         }
 
         public void QuitButton()
