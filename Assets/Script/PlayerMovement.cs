@@ -47,6 +47,7 @@ namespace Assets.Script
 
             var characterVelocity = Mathf.Abs(rb.velocity.x);
             animator.SetFloat("Speed", characterVelocity);
+            animator.SetBool("IsClimbing", isClimbing);
         }
 
         private void FixedUpdate()

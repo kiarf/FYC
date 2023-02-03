@@ -38,7 +38,6 @@ public class Ladder : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Exit");
         if (collision.CompareTag("Player"))
         {
             _playerCollides = false;
