@@ -1,7 +1,6 @@
-using Assets.Script;
 using UnityEngine;
 
-namespace Assets
+namespace Assets.Script
 {
     public class Objective : MonoBehaviour
     {
